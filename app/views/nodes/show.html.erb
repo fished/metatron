@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hostname:</strong>
+  <%= @node.hostname %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @node.comments %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @node.properties %>
+</p>
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>

@@ -1,0 +1,71 @@
+<%= form_for(@node, class: "inline-form") do |f| %>
+<% if @node.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@node.errors.count, "error") %> prohibited this node from being saved:</h2>
+
+  <ul>
+    <% @node.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group row">
+  <%= f.label :hostname, class: ".form-control-label"%><br>
+  <div class="col-sm-10 ">
+    <%= f.text_field :hostname, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group row">
+  <%= f.label :comments, class: ".form-control-label"%><br>
+  <div class="col-sm-10" >
+    <%= f.text_area :comments, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <%= f.label :addresses, class: ".form-control-label" %><br>
+
+  <div class="col-sm-10">
+    <table class="table table-striped col-sm-10">
+      <tr><th>Address</th><th>Delete?</th>
+        <%= f.fields_for :addresses do |addresses_form| %>
+        <tr>
+          <td><%= addresses_form.text_field :address%></td>
+          <td><%= addresses_form.check_box :_destroy%></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :properties, class: ".form-control-label" %><br>
+
+    <div class="col-sm-10">
+      <table class="table table-striped col-sm-10">
+        <tr><th>Key</th><th>Value</th><th>Delete?</td></tr>
+          <%= f.fields_for :properties do |pform| %>
+            <tr>
+              <td><%= pform.text_field :key%></td>
+              <td><%= pform.text_field :value%></td>
+              <td><%= pform.check_box :_destroy%></td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :networks, class: ".form-control-label" %><br>
+    <%if @node.networks.count > 0 %><ul>
+      <% @node.networks.each do |network| %>
+        <li><%= link_to network.address, edit_network_path(network) %></li>
+      <%end%>
+    <%else%>
+      No networks.
+    <%end%>
+  </div>
+  <div class="form-group row actions">
+    <%= f.submit %>
+  </div>
+<% end %>

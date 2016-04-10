@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Nodes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Hostname</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nodes.each do |node| %>
+      <tr>
+        <td><%= node.hostname %></td>
+        <td><%= node.comments %></td>
+        <td>
+          <%= edit_icon edit_node_path(node) %>
+          <%= remove_icon node, {method: :delete, data: { confirm: 'Are you sure?' }} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Node', new_node_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@network) do |f| %>
+  <% if @network.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@network.errors.count, "error") %> prohibited this network from being saved:</h2>
+
+      <ul>
+      <% @network.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label :address, class: ".form-control-label" %><br>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :description, class: ".form-control-label" %><br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :parents, class: ".form-control-label" %><br>
+    <%if @network.parents.count > 0 %><ul>
+      <% @network.parents.each do |parent| %>
+        <li><%= link_to parent.address, edit_network_path(parent) %></li>
+      <%end%>
+    <%else%>
+      No parents.
+    <%end%>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :addresses, class: ".form-control-label" %><br>
+    <%if @network.addresses.count > 0 %><ul>
+      <% @network.addresses.sort(&:address).each do |address| %>
+        <li><%= link_to "#{address.address} (#{address.node.hostname})", edit_node_path(address.node) %></li>
+      <%end%>
+    <%else%>
+      No nodes.
+    <%end%>
+  </div>
+
+  <div class="form-group row actions">
+    <%= f.submit %>
+  </div>
+<% end %>
