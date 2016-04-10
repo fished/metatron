@@ -21,6 +21,8 @@ class NodesController < ApplicationController
   # GET /nodes/new
   def new
     @node = Node.new
+    @node.addresses.build
+    @node.properties.build
   end
 
   # GET /nodes/1/edit
@@ -36,7 +38,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to edit_node_path, notice: 'Node was successfully created.' }
+        format.html { redirect_to edit_node_path(@node), notice: 'Node was successfully created.' }
         format.json { render :show, status: :created, location: @node }
       else
         format.html { render :new }

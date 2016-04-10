@@ -23,9 +23,10 @@ class Network < ActiveRecord::Base
     end
   end
 
-  # Reparent addresses when a new network is created
+  # Reparent networks and addresses when a new network is created
   after_create do
     Address.where(["address << inet ?", self.address]).map(&:set_network!)
+    Network.reparent!
   end
 
   # children
@@ -36,9 +37,20 @@ class Network < ActiveRecord::Base
   end
 
   # parent
-  before_save do
+  before_validation :set_parent
+  def set_parent
     self.parent=Network.find_parents(self.address).limit(1).first
   end
+
+  def set_parent!
+    self.set_parent
+    self.save!
+  end
+
+  def Network.reparent!
+    Network.all.map(&:set_parent!)
+  end
+
 
   # Return a list of all parents
   def parents

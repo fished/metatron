@@ -14,7 +14,7 @@
   <tbody>
     <% @nodes.each do |node| %>
       <tr>
-        <td><%= node.hostname %></td>
+        <td><%= link_to node.hostname, edit_node_path(node) %></td>
         <td><%= node.comments %></td>
         <td>
           <%= edit_icon edit_node_path(node) %>

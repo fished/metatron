@@ -33,7 +33,18 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :addresses, class: ".form-control-label" %><br>
+    <%= f.label :Subnets, class: ".form-control-label" %><br>
+    <%if @network.children.count > 0 %><ul>
+      <% @network.children.order(:address).each do |child| %>
+        <li><%= link_to child.address, edit_network_path(child) %></li>
+      <%end%>
+    <%else%>
+      No subnets.
+    <%end%>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :Nodes, class: ".form-control-label" %><br>
     <%if @network.addresses.count > 0 %><ul>
       <% @network.addresses.sort(&:address).each do |address| %>
         <li><%= link_to "#{address.address} (#{address.node.hostname})", edit_node_path(address.node) %></li>
