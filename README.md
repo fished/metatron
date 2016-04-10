@@ -10,14 +10,14 @@ testing has been implemented.*
 First of all, Metatron is the name of the heavenly scribe (an angel) in
 the Jewish tradition.  As Wikipedia says:
 
-  Metatron (Hebrew מטטרון) or Mattatron is an archangel in Judaism, known as
-  the Recording Angel or the Chancellor of Heaven (which makes Adramelech his
-  infernal counterpart). The name Metatron is not mentioned in the Hebrew
-  bible, nor is it mentioned in the early Enoch literature. How the name
-  originated is a matter of debate. Although Metatron is mentioned in a few brief
-  passages in the Talmud, he appears primarily in mystical Kabbalistic texts
-  within the Rabbinic literature. In that tradition, he is the highest of the
-  angels and serves as the celestial scribe or "recording angel"
+>  Metatron (Hebrew מטטרון) or Mattatron is an archangel in Judaism, known as
+>  the Recording Angel or the Chancellor of Heaven (which makes Adramelech his
+>  infernal counterpart). The name Metatron is not mentioned in the Hebrew
+>  bible, nor is it mentioned in the early Enoch literature. How the name
+>  originated is a matter of debate. Although Metatron is mentioned in a few brief
+>  passages in the Talmud, he appears primarily in mystical Kabbalistic texts
+>  within the Rabbinic literature. In that tradition, he is the highest of the
+>  angels and serves as the celestial scribe or "recording angel"
 
 That this software is named "Metatron" should give you a hint as to what it
 does.  The purpose of Metatron is to keep track of every node and IP on your
